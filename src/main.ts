@@ -25,13 +25,12 @@ const personB: Person = {
   },
 }
 
-console.log('Hi from Vite')
-console.log(JSON.stringify(personB, null, 2))
+function printPerson(person: { name: string }) {
+  console.log(`Hey there ${person.name}`)
+}
 
-let a: number = 4
-
-const b = [1, 2, 3]
-
-b.push(4)
-
-
+printPerson({ name: 'Johnny' })
+// Next call errors because you're explicitly setting a variable that doesn't exist on the function
+printPerson({ name: 'Stanley', age: 88 }) 
+// Whereas:
+printPerson(personB) // Works just fine
