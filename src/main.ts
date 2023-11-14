@@ -1,11 +1,13 @@
+type Address = {
+  houseNumber: number
+  street: string
+}
+
 type Person = {
   name: string
   age: number
   isProgrammer?: boolean
-  address?: {
-    houseNumber: number
-    street: string
-  }
+  address?: Address
 }
 
 const personA: Person = {
@@ -24,6 +26,8 @@ const personB: Person = {
 }
 
 console.log('Hi from Vite')
+console.log(JSON.stringify(personB, null, 2))
+
 let a: number = 4
 
 const b = [1, 2, 3]
