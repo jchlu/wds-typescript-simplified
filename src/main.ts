@@ -36,3 +36,12 @@ printPerson({ name: 'Johnny' })
 // printPerson({ name: 'Stanley', age: 88 }) 
 // Whereas:
 printPerson(personB) // Works just fine
+
+//Optional params
+
+function printInfo(info: {name: string}, options?: {debug: boolean}) {
+  options?.debug ? console.table(info) : console.log(info.name)
+}
+
+printInfo(personB)
+printInfo(personB, { debug: true })
