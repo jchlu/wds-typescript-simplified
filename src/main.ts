@@ -67,3 +67,15 @@ numbersWithCallback(2, 5, (input) => {
   console.log(input)
 })
 
+/* This can also be written by defining the callback function type */
+
+type PointlessConsoleFunction = (calculated: number) => void
+
+function anotherFuncWithCallback(a: number, b: number, calback: PointlessConsoleFunction) {
+  calback(a + b) // prints: 7
+}
+
+anotherFuncWithCallback(2, 5, (input) => {
+  console.log(input)
+})
+
