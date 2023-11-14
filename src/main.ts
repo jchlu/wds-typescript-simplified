@@ -13,8 +13,25 @@ type Person = {
 /* Intersection / Union    \/             \/      */
 type PersonWithId = Person & { id: string | number }
 
+type ImutableId = {
+  readonly id: string | number
+}
+
+type PersonWithImutableId = Person & ImutableId
+
+const personF: PersonWithImutableId = {
+  id: '567567-345345-345345-rter-45345',
+  name: "Bertrand",
+  age: 33,
+  isProgrammer: false
+}
+
+personF.isProgrammer = true // Works just fine
+personF.id = '123' // Fails because id is `readonly`
+
+
 /* Interface syntax is slightly different */
-interface PersonWithCar extends Person { make:string, model?: string }
+interface PersonWithCar extends Person { make: string, model?: string }
 
 const personE: PersonWithCar = {
   name: 'Harry',
