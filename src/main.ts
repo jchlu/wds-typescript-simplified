@@ -39,9 +39,21 @@ printPerson(personB) // Works just fine
 
 //Optional params
 
-function printInfo(info: {name: string}, options?: {debug: boolean}) {
+function printInfo(info: { name: string }, options?: { debug: boolean }) {
   options?.debug ? console.table(info) : console.log(info.name)
 }
 
 printInfo(personB)
 printInfo(personB, { debug: true })
+
+/* Descructuring */
+
+type Options = {
+  debugMode?: boolean
+  indentLevel?: number
+}
+
+//        function name  |-- no descruturing here--||-- destructuring using types      w/ default \/
+function printNameAndAge(name: string, age: string, { debugMode = false, indentLevel }: Options = {}) {
+  console.log(name, age, debugMode, indentLevel )
+}
