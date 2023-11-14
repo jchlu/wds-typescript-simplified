@@ -27,7 +27,7 @@ const personF: PersonWithImutableId = {
 }
 
 personF.isProgrammer = true // Works just fine
-personF.id = '123' // Fails because id is `readonly`
+// personF.id = '123' // Fails because id is `readonly`
 
 
 /* Interface syntax is slightly different */
@@ -67,6 +67,14 @@ const personB: Person = {
     street: 'Main Street',
   },
 }
+
+const car: { make: string, model?: string } = { make: 'Mercedes-Benz', model: 'SLK' }
+const cars: (typeof car)[] = [] // Infers the `typeof` the car object
+
+cars.push(car)
+cars.push({ make: 'Nissan', model: 'Skyline' })
+
+console.log(JSON.stringify(cars, null, 4))
 
 // The void return type is infered here as there is never anything returned.
 // Add a 'return' keyword without anything after it also imlies a void function return.
