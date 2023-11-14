@@ -10,6 +10,21 @@ type Person = {
   address?: Address
 }
 
+/* Intersection / Union    \/             \/      */
+type PersonWithId = Person & { id: string | number }
+
+const personC: PersonWithId = {
+  id: '345kh34j5h2lk34h5', // Type error without this field due to the Intersection
+  name: 'NormaJean',
+  age: 55,
+}
+
+const personD: PersonWithId = {
+  id: 7654321, // Also OK becuase of the Union type definition
+  name: 'Stanley',
+  age: 66,
+}
+
 const personA: Person = {
   name: "Johnny",
   age: 99,
