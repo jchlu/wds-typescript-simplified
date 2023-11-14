@@ -13,6 +13,17 @@ type Person = {
 /* Intersection / Union    \/             \/      */
 type PersonWithId = Person & { id: string | number }
 
+/* Interface syntax is slightly different */
+interface PersonWithCar extends Person { make:string, model?: string }
+
+const personE: PersonWithCar = {
+  name: 'Harry',
+  age: 44,
+  make: 'Ford'
+}
+
+console.log(JSON.stringify(personE, null, 4))
+
 const personC: PersonWithId = {
   id: '345kh34j5h2lk34h5', // Type error without this field due to the Intersection
   name: 'NormaJean',
