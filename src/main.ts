@@ -55,5 +55,15 @@ type Options = {
 
 //        function name  |-- no descruturing here--||-- destructuring using types      w/ default \/
 function printNameAndAge(name: string, age: string, { debugMode = false, indentLevel }: Options = {}) {
-  console.log(name, age, debugMode, indentLevel )
+  console.log(name, age, debugMode, indentLevel)
 }
+
+function numbersWithCallback(a: number, b: number, calback: (calculated: number) => void) {
+  // calback(a + b) // prints: 7
+  calback(a * b)    // prints: 10
+}
+
+numbersWithCallback(2, 5, (input) => {
+  console.log(input)
+})
+
