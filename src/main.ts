@@ -8,6 +8,11 @@ type Person = {
   age: number
   isProgrammer?: boolean
   address?: Address
+  skillLevel: 'Beginner' | 'Intermidiate' | 'Advanced'
+}
+
+function printSkillLevel(skillLevel: Person['skillLevel']) {
+  console.log(`Skill Level ${skillLevel ? skillLevel : 'Not Set'}`)
 }
 
 /* Intersection / Union    \/             \/      */
@@ -23,12 +28,30 @@ const personF: PersonWithImutableId = {
   id: '567567-345345-345345-rter-45345',
   name: "Bertrand",
   age: 33,
-  isProgrammer: false
+  isProgrammer: false,
+  skillLevel: "Beginner"
 }
 
 personF.isProgrammer = true // Works just fine
 // personF.id = '123' // Fails because id is `readonly`
 
+const personG: PersonWithImutableId = {
+  ...personF,
+  skillLevel: 'Intermidiate'
+}
+
+printSkillLevel(personG['skillLevel'])
+printSkillLevel(personF['skillLevel'])
+
+type PeopleGroupedBySkillLevel = {
+  [index in Person['skillLevel']] : Person[]
+}
+
+const levels: PeopleGroupedBySkillLevel = {
+  Beginner: [{ name: 'Frank', age: 22, skillLevel: 'Beginner' }],
+  Intermidiate: [],
+  Advanced: []
+}
 
 /* Interface syntax is slightly different */
 interface PersonWithCar extends Person { make: string, model?: string }
@@ -36,7 +59,8 @@ interface PersonWithCar extends Person { make: string, model?: string }
 const personE: PersonWithCar = {
   name: 'Harry',
   age: 44,
-  make: 'Ford'
+  make: 'Ford',
+  skillLevel: 'Intermidiate'
 }
 
 console.log(JSON.stringify(personE, null, 4))
@@ -45,18 +69,21 @@ const personC: PersonWithId = {
   id: '345kh34j5h2lk34h5', // Type error without this field due to the Intersection
   name: 'NormaJean',
   age: 55,
+  skillLevel: 'Advanced'
 }
 
 const personD: PersonWithId = {
   id: 7654321, // Also OK becuase of the Union type definition
   name: 'Stanley',
   age: 66,
+  skillLevel: 'Advanced'
 }
 
 const personA: Person = {
   name: "Johnny",
   age: 99,
   isProgrammer: true,
+  skillLevel: 'Beginner'
 }
 
 const personB: Person = {
@@ -66,6 +93,7 @@ const personB: Person = {
     houseNumber: 45,
     street: 'Main Street',
   },
+  skillLevel: 'Advanced'
 }
 
 const car: { make: string, model?: string } = { make: 'Mercedes-Benz', model: 'SLK' }
