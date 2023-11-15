@@ -82,6 +82,8 @@ function printPerson(person: { name: string }): void {
   console.log(`Hey there ${person.name}`)
 }
 
+type PrintFunc = typeof printPerson // create a function type after the initial function declaration
+
 printPerson({ name: 'Johnny' })
 // Next call errors because you're explicitly setting a variable that doesn't exist on the function
 // printPerson({ name: 'Stanley', age: 88 }) 
