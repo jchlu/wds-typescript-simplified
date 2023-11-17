@@ -26,3 +26,8 @@ function printSkillLevels() {
 }
 
 printSkillLevels()
+
+type ExampleTuple = [ string, boolean ]
+
+const a: ExampleTuple = ['Sausages', true]
+const b: ExampleTuple = ['For Tea', 7 ]
