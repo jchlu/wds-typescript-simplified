@@ -1,4 +1,5 @@
-const input = document.querySelector('.input')
+// Time to use a specific generic   |      HERE      |
+const input = document.querySelector<HTMLInputElement>('.input')
 /* Might return a value or undefined */
 console.log(input?.value)
-/* Property 'value' does not exist on type 'Element'. typescript (2339) [3, 20] */
+/* All is good */
