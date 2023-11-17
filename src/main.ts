@@ -9,10 +9,15 @@ type Person = {
   age: number
 }
 
-function getSecondElement(array) {
+function getSecondElement<ArrayType>(array: ArrayType[]): ArrayType {
 /* Parameter 'array' implicitly has an 'any' type. typescript (7006) [12, 27] */
   return array[1]
 }
 
 const arrayA = [1, 2, 3]
 const arrayB = [{name: 'Fred', age: 44}, {name: 'Bill', age: 66}]
+
+const returnA = getSecondElement(arrayA)
+const returnB = getSecondElement(arrayB)
+
+/* Typescript can imply the return without implicitly defining them */
