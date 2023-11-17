@@ -21,3 +21,11 @@ const returnA = getSecondElement(arrayA)
 const returnB = getSecondElement(arrayB)
 
 /* Typescript can imply the return without implicitly defining them */
+
+// A functio to convery and array of tuples to an object
+function aToO(arr){
+  const obj = {}
+  arr.forEach(([key, value]) => {
+    obj[key] = [value]
+  })
+}
