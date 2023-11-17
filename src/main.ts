@@ -1,9 +1,9 @@
-async function wait(delay: number) {
-  return new Promise(resolve => {
-    setTimeout(() => resolve('Hi'), delay)
+function wait(delay: number) {
+  return new Promise<string>(resolve => {
+    setTimeout(() => resolve('Sausages'), delay)
   })
 }
 
 wait(1000).then(value => {
-  console.log(value.length) // 'value' is of type 'unknown'. typescript (18046) [8, 15]
+  console.log(value.length)
 })
