@@ -24,6 +24,9 @@ type OtherTodo = Partial<Todo>
 
 // Use in combination with Pick / Omit to create type with a single source of truth
 
+type RequiredPick<T, Key extends keyof T> = Required<Pick<T, Key>> & T
+type PartialPick<T, Key extends keyof T> = Partial<Pick<T, Key>> & Omit<T, Key>
+
 // strip off id with Omit to allow setting on save
 type NewTodo = Omit<Todo, 'id'>
 // created new type by picking only what you need (for different reasons)
