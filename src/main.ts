@@ -18,6 +18,14 @@ type FinalImmutablePerson = Readonly<Person>
     readonly age: number;
 } */
 
+async function doSomething() {
+  // will always return a Promise
+  return 7
+}
+
+type ReturnOfDoSomething = Awaited<ReturnType<typeof doSomething>>
+// type ReturnOfDoSomething = number
+
 const checkLength = (a: string, b: number) => {
   return a.length < b // true or false
 }
