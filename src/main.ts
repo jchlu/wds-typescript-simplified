@@ -1,36 +1,23 @@
-// Example of using the Record type
-type Person = {
-  name: string
-  age: number
+type ToDo = {
+  title: string
+  priority: 'High' | 'Medium' | 'Low'
+  isComplete: boolean
+  description?: string
+  dueDate: Date | string
 }
 
-type PeopleGroupedByName1 = { [index: string]: Person[] }
-/* Can be rewritten usinf Record: */
-
-type PeopleGroupedByName2 = Record<string, Person[]>
-/* or, more spefifically if required: */
-
-type PeopleGroupedByName3 = Record<Person["name"], Person[]>
-
-type FinalImmutablePerson = Readonly<Person>
-/* type FinalImmutablePerson = {
-    readonly name: string;
-    readonly age: number;
-} */
-
-async function doSomething() {
-  // will always return a Promise
-  return 7
+function extendToDo(todo: ToDo) {
+  if (typeof todo.dueDate === 'string') {
+    console.log(todo.dueDate.trim()) // (property) dueDate: string
+  } else {
+    console.log(todo.dueDate.getTime()) // (property) dueDate: Date
+  }
 }
 
-type ReturnOfDoSomething = Awaited<ReturnType<typeof doSomething>>
-// type ReturnOfDoSomething = number
-
-const checkLength = (a: string, b: number) => {
-  return a.length < b // true or false
+function extendToDo2(todo: ToDo) {
+  if (todo.dueDate instanceof Date) {
+    console.log(todo.dueDate.getTime()) // (property) dueDate: Date
+  } else {
+    console.log(todo.dueDate.trim()) // (property) dueDate: string
+  }
 }
-
-type returnTypeOfCheckLength = ReturnType<typeof checkLength>
-/* type returnTypeOfCheckLength = boolean */
-type paramsOfChekcLength = Parameters<typeof checkLength>
-/* type paramsOfChekcLength = [a: string, b: number] */
