@@ -21,3 +21,21 @@ function extendToDo2(todo: ToDo) {
     console.log(todo.dueDate.trim()) // (property) dueDate: string
   }
 }
+
+const switchOnToDoPriority = (todo: ToDo) => {
+  switch (todo.priority) {
+    case 'Low':
+      console.log(todo.priority)
+      break
+    case 'Medium':
+      console.log(todo.priority)
+      break
+    case 'High':
+      console.log(todo.priority)
+      break
+    default:
+      /* This can never be reached, so it's a safety check */
+      const a: never = todo.priority
+      return a
+  }
+}
