@@ -12,6 +12,12 @@ type PeopleGroupedByName2 = Record<string, Person[]>
 
 type PeopleGroupedByName3 = Record<Person["name"], Person[]>
 
+type FinalImmutablePerson = Readonly<Person>
+/* type FinalImmutablePerson = {
+    readonly name: string;
+    readonly age: number;
+} */
+
 const checkLength = (a: string, b: number) => {
   return a.length < b // true or false
 }
