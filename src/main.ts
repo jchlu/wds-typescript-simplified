@@ -6,6 +6,22 @@ type ToDo = {
   dueDate: Date | string
 }
 
+const ourTodo = {
+  title: 'Give an example of satisfies',
+  priority: 'Low',
+  isComplete: true,
+  description: 'Because dueDate is more specific, using satisfies narrows it!',
+  dueDate: new Date()
+} satisfies ToDo
+
+/* const ourTodo: {
+  title: string;
+  priority: "Low";
+  isComplete: true;
+  dueDate: Date; // NOTE - THIS IS SPECIFICALLY A DATE OBJECT HERE
+} */
+
+
 function extendToDo(todo: ToDo) {
   if (typeof todo.dueDate === 'string') {
     console.log(todo.dueDate.trim()) // (property) dueDate: string
