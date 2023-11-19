@@ -1,3 +1,29 @@
+// Descriminat[ed | ing] Union
+
+type SuccessResponse = {
+  status: "Success"
+  data: { id: string, name: string }
+}
+
+type ErrorRensponse = {
+  status: "Error"
+  message: string
+}
+
+type UserApiResponse = ErrorRensponse | SuccessResponse
+
+const handleUserApiResponse = (res: UserApiResponse) => {
+  if (res.status === 'Success') {
+    // (parameter) res: SuccessResponse
+    console.log(res.data.name) // no need to check - data must exist
+  }
+  else {
+    // (parameter) res: ErrorRensponse
+    console.log(res.message) // no need to check - message must exist
+  }
+
+}
+
 type ToDo = {
   title: string
   priority: 'High' | 'Medium' | 'Low'
