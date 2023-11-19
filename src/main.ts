@@ -1,3 +1,25 @@
+// Function Overloading
+
+function sum(a: number[]): number
+function sum(a: number, b: number): number
+function sum(a: number | number[], b?: number) {
+  if (Array.isArray(a)) {
+    return a.reduce((acc, val) => acc + val, 0)
+  } else {
+    return b ? a + b : null
+  }
+}
+
+const arrA = [1, 2, 3]
+
+const res1 = sum(arrA)
+const res2 = sum(3, 4)
+// const res3 = sum(arrA, 5) // FAILS
+/* Argument of type 'number[]' is not assignable to parameter of type 'number'. 
+ * typescript (2345) [17, 18] */
+console.log(`Result of res1: ${res1}`)
+console.log(`Result of res2: ${res2}`)
+
 // Descriminat[ed | ing] Union
 
 type SuccessResponse = {
@@ -10,6 +32,7 @@ type ErrorRensponse = {
   message: string
 }
 
+/* This is known as a Descriminated Union */
 type UserApiResponse = ErrorRensponse | SuccessResponse
 
 const handleUserApiResponse = (res: UserApiResponse) => {
