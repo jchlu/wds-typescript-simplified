@@ -15,7 +15,7 @@ const arrA = [1, 2, 3]
 const res1 = sum(arrA)
 const res2 = sum(3, 4)
 // const res3 = sum(arrA, 5) // FAILS
-/* Argument of type 'number[]' is not assignable to parameter of type 'number'. 
+/* Argument of type 'number[]' is not assignable to parameter of type 'number'.
  * typescript (2345) [17, 18] */
 console.log(`Result of res1: ${res1}`)
 console.log(`Result of res2: ${res2}`)
@@ -23,12 +23,12 @@ console.log(`Result of res2: ${res2}`)
 // Descriminat[ed | ing] Union
 
 type SuccessResponse = {
-  status: "Success"
-  data: { id: string, name: string }
+  status: 'Success'
+  data: { id: string; name: string }
 }
 
 type ErrorRensponse = {
-  status: "Error"
+  status: 'Error'
   message: string
 }
 
@@ -39,12 +39,10 @@ const handleUserApiResponse = (res: UserApiResponse) => {
   if (res.status === 'Success') {
     // (parameter) res: SuccessResponse
     console.log(res.data.name) // no need to check - data must exist
-  }
-  else {
+  } else {
     // (parameter) res: ErrorRensponse
     console.log(res.message) // no need to check - message must exist
   }
-
 }
 
 type ToDo = {
@@ -60,7 +58,7 @@ const ourTodo = {
   priority: 'Low',
   isComplete: true,
   description: 'Because dueDate is more specific, using satisfies narrows it!',
-  dueDate: new Date()
+  dueDate: new Date(),
 } satisfies ToDo
 
 /* const ourTodo: {
@@ -69,7 +67,6 @@ const ourTodo = {
   isComplete: true;
   dueDate: Date; // NOTE - THIS IS SPECIFICALLY A DATE OBJECT HERE
 } */
-
 
 function extendToDo(todo: ToDo) {
   if (typeof todo.dueDate === 'string') {
